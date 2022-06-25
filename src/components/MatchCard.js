@@ -1,12 +1,6 @@
 import React, { useEffect } from "react"
+import { getTeamInitials } from "../helpers/helperFunctions"
 
-const getTeamInitials = (teamName) => {
-  let initials = teamName
-    .split(" ")
-    .map((ele) => ele[0])
-    .join("")
-  return initials === "PK" ? "PBKS" : initials === "SH" ? "SRH" : initials
-}
 const MatchCard = (props) => {
   const { data, counter } = props
   return (

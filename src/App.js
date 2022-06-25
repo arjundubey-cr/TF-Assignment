@@ -3,6 +3,7 @@ import "./App.css"
 import AppBar from "./components/AppBar"
 import MatchesData from "./components/MatchesData"
 import NavBar from "./components/NavBar"
+import PointsTable from "./components/PointsTable"
 const dataURL =
   "https://gist.githubusercontent.com/hdck007/57650c774d9631c097db855bf110a4b6/raw/58b00de2a8c06831fda2f471e1b635a90208a4be/ipl.json"
 
@@ -10,6 +11,7 @@ function App() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState("MATCHES")
+  const [filterTags, setFilterTags] = useState([])
   useEffect(() => {
     fetch(dataURL)
       .then((response) => {
@@ -34,14 +36,24 @@ function App() {
   }
   return (
     <div className="bg-stone-600">
-      <AppBar />
+      <AppBar
+        filterTags={(filterTags) => {
+          console.info("Filter Tags", filterTags)
+          setFilterTags(filterTags)
+        }}
+        activeTab={activeTab}
+      />
       <NavBar
         activeTab={(active) => {
           setActiveTab(active)
         }}
       />
       <div className="bg-stone-800 mx-40">
-        {activeTab === "MATCHES" ? <MatchesData data={data} loading={loading} /> : "TABLE"}
+        {activeTab === "MATCHES" ? (
+          <MatchesData data={data} filterTags={filterTags} />
+        ) : (
+          <PointsTable data={data} />
+        )}
       </div>
     </div>
   )
