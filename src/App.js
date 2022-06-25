@@ -33,15 +33,16 @@ function App() {
     return <div>Loading....</div>
   }
   return (
-    <div>
+    <div className="bg-stone-600">
       <AppBar />
       <NavBar
         activeTab={(active) => {
           setActiveTab(active)
         }}
       />
-
-      <MatchesData data={data} loading={loading} />
+      <div className="bg-stone-800 mx-40">
+        {activeTab === "MATCHES" ? <MatchesData data={data} loading={loading} /> : "TABLE"}
+      </div>
     </div>
   )
 }

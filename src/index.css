@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   padding: 0;
@@ -9,13 +13,37 @@ body {
 .teamLogo {
   background-position: center;
   background-size: contain;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.GTLogo {
+  background-image: url("/src/static/team_logo/GT.png");
+}
+.SRHLogo {
+  background-image: url("/src/static/team_logo/SRH.png");
+}
+.RRLogo {
+  background-image: url("/src/static/team_logo/RR.png");
+}
+.LSGLogo {
+  background-image: url("/src/static/team_logo/LSG.png");
+}
+.RCBLogo {
+  background-image: url("/src/static/team_logo/RCB.png");
+}
+.PBKSLogo {
+  background-image: url("/src/static/team_logo/PBKS.png");
+}
+.DCLogo {
+  background-image: url("/src/static/team_logo/DC.png");
+}
+.KKRLogo {
+  background-image: url("/src/static/team_logo/KKR.png");
 }
 .CSKLogo {
   background-image: url("/src/static/team_logo/CSK.png");
 }
 .MILogo {
   background-image: url("/src/static/team_logo/MI.png");
-}
-.LSGLogo {
-  background-image: url("/src/static/team_logo/LSG.png");
 }

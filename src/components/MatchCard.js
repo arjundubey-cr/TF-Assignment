@@ -1,33 +1,41 @@
 import React, { useEffect } from "react"
-import styles from "./MatchCard.module.css"
 
 const getTeamInitials = (teamName) => {
-  return teamName
+  let initials = teamName
     .split(" ")
     .map((ele) => ele[0])
     .join("")
+  return initials === "PK" ? "PBKS" : initials === "SH" ? "SRH" : initials
 }
 const MatchCard = (props) => {
   const { data, counter } = props
   return (
-    <div className={styles.card}>
-      <div className={styles.matchInfo}>
+    <div className="border border-gray-200 border-opacity-60 rounded-sm md:w-1/2 mt-5 p-5 md:mt-0 text-slate-200">
+      <div className="flex justify-between">
         <span>T20 {counter + 1} of 70 </span>
         <span>{data.date}</span>
       </div>
       <div>
-        <img
-          alt=""
-          className={`${getTeamInitials(data.team1) + "Logo"} teamLogo`}
-          height="20px"
-          width="20px"
-        />
-        {getTeamInitials(data.team1)}
-        <br />
-        {getTeamInitials(data.team2)}
-        <br />
-        {data.winner}
+        <div className="flex">
+          <img
+            alt=""
+            className={`${getTeamInitials(data.team1) + "Logo"} bg-center bg-contain p-2`}
+            height="20px"
+            width="20px"
+          />
+          {getTeamInitials(data.team1)}
+        </div>
+        <div className="flex">
+          <img
+            alt=""
+            className={`${getTeamInitials(data.team2) + "Logo"} bg-center bg-contain p-2`}
+            height="20px"
+            width="20px"
+          />
+          {getTeamInitials(data.team2)}
+        </div>
       </div>
+      {data.winner ? getTeamInitials(data.winner) + " won the match" : ""}
     </div>
   )
 }
