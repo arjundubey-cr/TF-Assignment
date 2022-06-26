@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react"
 import { getMatchesData, getTeamInitials } from "../helpers/helperFunctions"
-
+import { ReactComponent as Won } from "../static/yes.svg"
+import { ReactComponent as Lost } from "../static/no.svg"
 const PointsTable = (props) => {
   const { data } = props
   const [matchData, setMatchData] = useState(null)
@@ -22,31 +23,84 @@ const PointsTable = (props) => {
     return "Loading..."
   }
   return (
-    <div>
-      {pointsTable.map((ele, index) => {
-        return (
-          <div key={index} className="text-gray-200 flex">
-            <div className="flex basis-3/4 items-center">
-              <img
-                alt=""
-                className={`${getTeamInitials(ele[0]) + "Logo"} bg-center bg-contain p-2`}
-                height="20px"
-                width="20px"
-              />
-              {ele[0]}
-            </div>
-            <div>{matchData[ele[0]].matchesPlayed}</div>
-            <div>{matchData[ele[0]].won}</div>
-            <div>{matchData[ele[0]].matchesPlayed - matchData[ele[0]].won}</div>
-            <div>{matchData[ele[0]].won * 2}</div>
-            <div className="flex flex-wrap">
-              {matchData[ele[0]].matchResults.map((ele, index) => {
-                return <div>{ele ? "true" : "false"}</div>
-              })}
-            </div>
-          </div>
-        )
-      })}
+    <div className="h-screen">
+      <table className="min-w-full">
+        <thead className="sticky top-0">
+          <tr>
+            <th
+              scope="col"
+              className="sticky left-0 py-3 px-3 text-left font-normal text-xs tracking-wider text-gray-400">
+              Team
+            </th>
+            <th
+              scope="col"
+              className="text-left px-2 text-xs font-normal tracking-wider text-gray-400">
+              M
+            </th>
+            <th
+              scope="col"
+              className="text-left px-2  text-xs font-normal tracking-wider text-gray-500">
+              W
+            </th>
+            <th
+              scope="col"
+              className="text-left px-2  text-xs font-normal tracking-wider text-gray-500">
+              L
+            </th>
+            <th
+              scope="col"
+              className="text-left px-2 text-xs font-normal tracking-wider text-gray-500">
+              Pts
+            </th>
+            <th
+              scope="col"
+              className="text-leftpx-2 text-xs font-normal tracking-wider text-gray-500">
+              Last 5
+            </th>
+          </tr>
+        </thead>
+        <tbody className="text-gray-200">
+          {pointsTable.map((ele, index) => {
+            return (
+              <tr key={index} className="border-t border-gray-400/40">
+                <td className="sticky left-0 whitespace-nowrap px-4 py-3 text-sm w-full">
+                  <div className="flex basis-3/4 items-center">
+                    <div className="">{index + 1}</div>
+                    <img
+                      alt=""
+                      className={`${
+                        getTeamInitials(ele[0]) + "Logo"
+                      } bg-center bg-contain p-3 mx-2`}
+                      height="24px"
+                      width="24px"
+                    />
+                    <div>{getTeamInitials(ele[0])}</div>
+                  </div>
+                </td>
+                <td className="whitespace-nowrap text-sm px-2">
+                  {matchData[ele[0]].matchesPlayed}
+                </td>
+                <td className="whitespace-nowrap text-sm px-2">{matchData[ele[0]].won}</td>
+                <td className="whitespace-nowrap text-sm px-2">
+                  {matchData[ele[0]].matchesPlayed - matchData[ele[0]].won}
+                </td>
+                <td className="whitespace-nowrap text-sm px-2">{matchData[ele[0]].won * 2}</td>
+                <td className="whitespace-nowrap text-sm px-2">
+                  <div className="flex">
+                    {matchData[ele[0]].matchResults.slice(-5).map((ele, index) => {
+                      return (
+                        <div>
+                          {ele === true ? <Won className="w-5" /> : <Lost className="w-5" />}
+                        </div>
+                      )
+                    })}
+                  </div>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
     </div>
   )
 }

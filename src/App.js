@@ -35,7 +35,7 @@ function App() {
     return <div>Loading....</div>
   }
   return (
-    <div className="bg-stone-600">
+    <div className="bg-stone-600 w-100 h-full">
       <AppBar
         filterTags={(filterTags) => {
           console.info("Filter Tags", filterTags)
@@ -48,7 +48,7 @@ function App() {
           setActiveTab(active)
         }}
       />
-      <div className="bg-stone-800 mx-40">
+      <div className="bg-stone-800 max-w-3xl m-auto">
         {activeTab === "MATCHES" ? (
           <MatchesData data={data} filterTags={filterTags} />
         ) : (

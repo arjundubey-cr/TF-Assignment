@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { ReactComponent as BackArrow } from "../static/arrow_back.svg"
 import { ReactComponent as Cross } from "../static/cross.svg"
-const AppBar = ({ filterTags }) => {
+const AppBar = ({ filterTags, activeTab }) => {
   const [input, setInput] = useState("")
   const [tags, setTags] = useState([])
   const [isKeyReleased, setIsKeyReleased] = useState(false)
@@ -39,18 +39,20 @@ const AppBar = ({ filterTags }) => {
   }
   useEffect(() => {
     filterTags(tags)
-  }, [tags])
+  }, [tags, filterTags])
   return (
     <div
       style={{
-        height: "50px",
+        height: "25px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "#008080",
         color: "white",
         paddingInline: "1em",
-      }}>
+        paddingTop: "40px",
+        paddingBottom: "20px",
+      }}
+      className="bg-teal-600">
       <div
         style={{
           display: "flex",
@@ -58,9 +60,12 @@ const AppBar = ({ filterTags }) => {
         <BackArrow style={{ height: "25px", alignItems: "center", fill: "white" }} />
         IPL
       </div>
-      <div className="rounded border-solid border flex max-w-full text-black w-1/2 bg-white">
+      <div
+        className={`rounded-full border-solid border flex max-w-full text-black w-1/2 bg-white ${
+          activeTab === "TABLE" ? "hidden" : ""
+        }`}>
         {tags.map((tag, index) => (
-          <div className="flex items-center mr-2 pr-1 rounded bg-yellow-600 text-white whitespace-nowrap">
+          <div className="flex items-center mr-2 px-1 rounded-full bg-gray-400 text-white whitespace-nowrap">
             {tag}
             <button onClick={() => deleteTag(index)} className="flex p-1 cursor-pointer text-white">
               x
@@ -69,11 +74,11 @@ const AppBar = ({ filterTags }) => {
         ))}
         <input
           value={input}
-          placeholder="Enter search text"
+          placeholder="Enter team(s)"
           onKeyDown={onKeyDown}
           onChange={onChange}
           onKeyUp={onKeyUp}
-          className="rounded p-3 w-full border-none"
+          className="rounded-full p-3 w-full border-none outline-0"
         />
       </div>
       <Cross style={{ height: "25px", fill: "white" }} />

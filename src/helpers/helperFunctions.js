@@ -1,4 +1,5 @@
 export const getTeamInitials = (teamName) => {
+  if (teamName === null) return ""
   let initials = teamName
     .split(" ")
     .map((ele) => ele[0])
