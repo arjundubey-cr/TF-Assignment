@@ -58,11 +58,13 @@ const AppBar = ({ filterTags }) => {
         <BackArrow style={{ height: "25px", alignItems: "center", fill: "white" }} />
         IPL
       </div>
-      <div className="search-box">
+      <div className="rounded border-solid border flex max-w-full text-black w-1/2 bg-white">
         {tags.map((tag, index) => (
-          <div>
+          <div className="flex items-center mr-2 pr-1 rounded bg-yellow-600 text-white whitespace-nowrap">
             {tag}
-            <button onClick={() => deleteTag(index)}>x</button>
+            <button onClick={() => deleteTag(index)} className="flex p-1 cursor-pointer text-white">
+              x
+            </button>
           </div>
         ))}
         <input
@@ -71,7 +73,7 @@ const AppBar = ({ filterTags }) => {
           onKeyDown={onKeyDown}
           onChange={onChange}
           onKeyUp={onKeyUp}
-          className="text-black"
+          className="rounded p-3 w-full border-none"
         />
       </div>
       <Cross style={{ height: "25px", fill: "white" }} />
