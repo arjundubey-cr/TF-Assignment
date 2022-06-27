@@ -39,7 +39,7 @@ function App() {
       <div className="sticky top-0 z-50">
         <AppBar
           filterTags={(filterTags) => {
-            console.info("Filter Tags", filterTags)
+            // console.info("Filter Tags", filterTags)
             setFilterTags(filterTags)
           }}
           activeTab={activeTab}
@@ -50,6 +50,7 @@ function App() {
           }}
         />
       </div>
+      {/* Matches and Table data component which handle show and hide on click of respective button */}
       <div className="bg-stone-800 max-w-3xl m-auto">
         {activeTab === "MATCHES" ? (
           <MatchesData data={data} filterTags={filterTags} />

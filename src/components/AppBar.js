@@ -13,8 +13,7 @@ const AppBar = ({ filterTags, activeTab }) => {
   const onKeyDown = (e) => {
     const { key } = e
     const trimmedInput = input.trim()
-
-    if (key === "," && trimmedInput.length && !tags.includes(trimmedInput)) {
+    if ((key === "," || key === "Enter") && trimmedInput.length && !tags.includes(trimmedInput)) {
       e.preventDefault()
       setTags((prevState) => [...prevState, trimmedInput])
       setInput("")
@@ -43,7 +42,7 @@ const AppBar = ({ filterTags, activeTab }) => {
   return (
     <div
       style={{}}
-      className="bg-teal-600 text-white md:flex md:justify-between items-center md:pt-2">
+      className="bg-teal-600 text-white md:flex md:justify-between items-center md:p-2 ">
       <div
         style={{
           display: "flex",
@@ -58,7 +57,9 @@ const AppBar = ({ filterTags, activeTab }) => {
           activeTab === "TABLE" ? "hidden" : ""
         }`}>
         {tags.map((tag, index) => (
-          <div className="flex items-center mr-2 px-1 rounded-full bg-gray-400 text-white whitespace-nowrap">
+          <div
+            className="flex items-center mr-2 px-2 rounded-full bg-gray-400 text-white whitespace-nowrap"
+            key={index}>
             {tag}
             <button
               onClick={() => deleteTag(index)}

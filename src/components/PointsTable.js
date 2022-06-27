@@ -13,17 +13,16 @@ const PointsTable = (props) => {
 
   useEffect(() => {
     const [matchData, pointTable] = getData()
-    console.log(matchData, pointTable)
     setMatchData(matchData)
     setPointsTable(pointTable)
     setIsLoading(false)
   }, [getData])
 
   if (isLoading) {
-    return "Loading..."
+    return <div className="h-screen w-screen">Loading..</div>
   }
   return (
-    <div className="overflow-x-auto p-1 h-screen overflow-y-hidden">
+    <div className="overflow-x-auto p-1 pr-4 h-screen overflow-y-hidden mt-5">
       <table className="w-full h-100">
         <thead className="sticky top-0">
           <tr>
@@ -89,7 +88,7 @@ const PointsTable = (props) => {
                   <div className="flex">
                     {matchData[ele[0]].matchResults.slice(-5).map((ele, index) => {
                       return (
-                        <div>
+                        <div key={index}>
                           {ele === true ? <Won className="w-5" /> : <Lost className="w-5" />}
                         </div>
                       )
