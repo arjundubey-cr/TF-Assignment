@@ -23,18 +23,18 @@ const PointsTable = (props) => {
     return "Loading..."
   }
   return (
-    <div className="h-screen">
-      <table className="min-w-full">
+    <div className="overflow-x-auto p-1 h-screen overflow-y-hidden">
+      <table className="w-full h-100">
         <thead className="sticky top-0">
           <tr>
             <th
               scope="col"
-              className="sticky left-0 py-3 px-3 text-left font-normal text-xs tracking-wider text-gray-400">
+              className="sticky left-0 py-3 px-4 pr-32 bg-stone-800 text-left font-normal text-xs tracking-wider bg-stone-800 text-gray-400">
               Team
             </th>
             <th
               scope="col"
-              className="text-left px-2 text-xs font-normal tracking-wider text-gray-400">
+              className="text-left px-2 text-xs font-normal tracking-wider text-gray-500">
               M
             </th>
             <th
@@ -63,8 +63,8 @@ const PointsTable = (props) => {
           {pointsTable.map((ele, index) => {
             return (
               <tr key={index} className="border-t border-gray-400/40">
-                <td className="sticky left-0 whitespace-nowrap px-4 py-3 text-sm w-full">
-                  <div className="flex basis-3/4 items-center">
+                <td className="sticky left-0 whitespace-nowrap px-4 pr-32 py-3 bg-stone-800 text-sm w-3/5 md:w-full">
+                  <div className="flex items-center">
                     <div className="">{index + 1}</div>
                     <img
                       alt=""

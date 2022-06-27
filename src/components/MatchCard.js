@@ -4,7 +4,7 @@ import { getTeamInitials } from "../helpers/helperFunctions"
 const MatchCard = (props) => {
   const { data, counter } = props
   return (
-    <div className="border border-gray-200 border-opacity-10 rounded-sm mt-5 p-5 md:mt-0 text-[#bdc1c6] text-sm">
+    <div className="border border-gray-400/40 rounded-lg md:rounded-none mt-5 md:mt-0 p-5 mx-5 md:mx-0 text-[#bdc1c6] text-sm hover:bg-black">
       <div className="flex justify-between">
         <span>T20 {counter + 1} of 70 </span>
         <span className="text-xs">{data.date}</span>

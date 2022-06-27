@@ -42,32 +42,27 @@ const AppBar = ({ filterTags, activeTab }) => {
   }, [tags, filterTags])
   return (
     <div
-      style={{
-        height: "25px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        color: "white",
-        paddingInline: "1em",
-        paddingTop: "40px",
-        paddingBottom: "20px",
-      }}
-      className="bg-teal-600">
+      style={{}}
+      className="bg-teal-600 text-white md:flex md:justify-between items-center md:pt-2">
       <div
         style={{
           display: "flex",
         }}>
-        <BackArrow style={{ height: "25px", alignItems: "center", fill: "white" }} />
+        <BackArrow
+          style={{ height: "25px", alignItems: "center", fill: "white", marginRight: "5px" }}
+        />
         IPL
       </div>
       <div
-        className={`rounded-full border-solid border flex max-w-full text-black w-1/2 bg-white ${
+        className={`rounded-full border-solid border flex max-w-full text-black md:w-1/2 mx-1 my-2 md:my-0 md:mx-0 bg-white ${
           activeTab === "TABLE" ? "hidden" : ""
         }`}>
         {tags.map((tag, index) => (
           <div className="flex items-center mr-2 px-1 rounded-full bg-gray-400 text-white whitespace-nowrap">
             {tag}
-            <button onClick={() => deleteTag(index)} className="flex p-1 cursor-pointer text-white">
+            <button
+              onClick={() => deleteTag(index)}
+              className="flex p-1 cursor-pointer text-white text-xs">
               x
             </button>
           </div>
@@ -78,7 +73,7 @@ const AppBar = ({ filterTags, activeTab }) => {
           onKeyDown={onKeyDown}
           onChange={onChange}
           onKeyUp={onKeyUp}
-          className="rounded-full p-3 w-full border-none outline-0"
+          className="rounded-full p-3 w-full border-none outline-0 h-0.5"
         />
       </div>
       <Cross style={{ height: "25px", fill: "white" }} />

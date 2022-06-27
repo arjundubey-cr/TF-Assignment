@@ -36,18 +36,20 @@ function App() {
   }
   return (
     <div className="bg-stone-600 w-100 h-full">
-      <AppBar
-        filterTags={(filterTags) => {
-          console.info("Filter Tags", filterTags)
-          setFilterTags(filterTags)
-        }}
-        activeTab={activeTab}
-      />
-      <NavBar
-        activeTab={(active) => {
-          setActiveTab(active)
-        }}
-      />
+      <div className="sticky top-0 z-50">
+        <AppBar
+          filterTags={(filterTags) => {
+            console.info("Filter Tags", filterTags)
+            setFilterTags(filterTags)
+          }}
+          activeTab={activeTab}
+        />
+        <NavBar
+          activeTab={(active) => {
+            setActiveTab(active)
+          }}
+        />
+      </div>
       <div className="bg-stone-800 max-w-3xl m-auto">
         {activeTab === "MATCHES" ? (
           <MatchesData data={data} filterTags={filterTags} />

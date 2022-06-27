@@ -10,7 +10,7 @@ const NavBar = ({ activeTab }) => {
         {navTabs.map((ele, index) => {
           return (
             <div
-              className={`flex-1 border-b-2 border-transparent ${
+              className={`flex-1 border-b-2 border-transparent cursor-pointer ${
                 active === ele ? "border-pink-100" : ""
               }`}
               key={index}
