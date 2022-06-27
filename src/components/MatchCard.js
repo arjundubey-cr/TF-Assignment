@@ -1,6 +1,12 @@
 import React from "react"
 import { getTeamInitials } from "../helpers/helperFunctions"
-
+const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+const processDate = (date) => {
+  const dt = new Date(date + "2022")
+  const day = weekday[dt.getDay()]
+  const val = [day, date].join(", ")
+  return val
+}
 const MatchCard = (props) => {
   const { data, counter, totalCount } = props
   return (
@@ -9,7 +15,7 @@ const MatchCard = (props) => {
         <span>
           T20 {counter + 1} of {totalCount}{" "}
         </span>
-        <span className="text-xs">{data.date}</span>
+        <span className="text-xs">{data.date.length > 6 ? data.date : processDate(data.date)}</span>
       </div>
       <div className="py-0.5">
         <div className="flex">
